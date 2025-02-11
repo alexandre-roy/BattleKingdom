@@ -1,7 +1,7 @@
 ﻿
 namespace BattleKingdom.Models
 {
-    internal class Yoshi : Attaquant, ICompetenceSpeciale
+    internal class Yoshi : Heros, ICompetenceSpeciale
     {
         public Yoshi(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie)
         {

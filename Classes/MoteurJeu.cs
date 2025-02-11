@@ -67,8 +67,7 @@ namespace BattleKingdom.Classes
             if (familleMario.Contains(pHeros))
                 return Type.GetType($"BattleKingdom.Models.{pHeros}, BattleKingdom");
             else
-                //TODO : Choisir le type ici (TYPEaDEFINIR)
-                return Type.GetType("BattleKingdom.Models.TYPEaDEFINIR, BattleKingdom"); 
+                return Type.GetType("BattleKingdom.Models.FamilleLapin, BattleKingdom"); 
         }
 
         /// <summary>
@@ -84,7 +83,6 @@ namespace BattleKingdom.Classes
 
             int distance = GrilleJeu.CalculerDistance(new GrilleJeu.CoordonneesGrille(pAttaquant.PositionX, pAttaquant.PositionY), new GrilleJeu.CoordonneesGrille(pAttaque.PositionX, pAttaque.PositionY));
 
-            //TODO: Modifier le type (à droite de IS) représentant les personnages qui peuvent attaquer
             if (distance <= (pAttaquant as Attaquant).Arme.NbCasesMaxDistance)
                 return true;
             else
@@ -119,7 +117,6 @@ namespace BattleKingdom.Classes
             if (HerosCourant == null)
                 return false;
 
-            //TODO: Modifier le type (à droite de IS) représentant les personnages ayant une compétence spéciale
             (HerosCourant as ICompetenceSpeciale).ActiverCompetenceSpeciale(); 
 
             return true;
@@ -135,10 +132,8 @@ namespace BattleKingdom.Classes
             // Tour terminé
             if (NbActionRestante == 0)
             {
-                //TODO: Modifier le type (à droite de IS) représentant les personnages ayant une COMPÉTENCE SPÉCIALE
                 foreach (Personnage personnage in ListePersonnages.FindAll(p => p is ICompetenceSpeciale && p.NbPointsVie > 0))
                 {
-                    //TODO: Modifier le type (à droite de AS) représentant les personnages ayant une COMPÉTENCE SPÉCIALE
                     (personnage as ICompetenceSpeciale).DesactiverCompetenceSpeciale();
                 }
             }
@@ -154,8 +149,7 @@ namespace BattleKingdom.Classes
             Personnage herosPlusProche = null;
             int distancePlusProche = LARGEUR_GRILLE;
 
-            //TODO: Modifier le type (à droite de IS) représentant les personnages héros
-            foreach (Personnage heros in ListePersonnages.FindAll(p => p is Attaquant && p.NbPointsVie > 0))
+            foreach (Personnage heros in ListePersonnages.FindAll(p => p is (Heros) && p.NbPointsVie > 0))
             {
                 int distance = GrilleJeu.CalculerDistance(new GrilleJeu.CoordonneesGrille(pEnnemi.PositionX, pEnnemi.PositionY), new GrilleJeu.CoordonneesGrille(heros.PositionX, heros.PositionY));
 
@@ -226,8 +220,16 @@ namespace BattleKingdom.Classes
         /// <param name="pListePersonnages">Liste des personnages</param>
         public static void InitialiserEnnemis(List<Personnage> pListePersonnages)
         {
-            //TODO : À compléter
-            throw new NotImplementedException();
+            GrilleJeu.CoordonneesGrille positionPersonnage;
+
+            positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
+            pListePersonnages.Add(new Ennemis("Ziggy", positionPersonnage.X, positionPersonnage.Y, 5, 100));
+
+            positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
+            pListePersonnages.Add(new Ennemis("Smasher", positionPersonnage.X, positionPersonnage.Y, 7, 50));
+
+            positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
+            pListePersonnages.Add(new Ennemis("Kong", positionPersonnage.X, positionPersonnage.Y, 3, 150));
         }
 
         /// <summary>
@@ -237,8 +239,21 @@ namespace BattleKingdom.Classes
         /// <returns>L'état du jeu : y-a-t'il un gagnant et si oui, quelle équipe? (ennemis ou héros)</returns>
         public static SantePersonnages EvaluerSantePersonnages(List<Personnage> pListePersonnages)
         {
-            //TODO : À compléter
-            throw new NotImplementedException();
+            bool herosEnVie = pListePersonnages.Any(p => p is Heros && p.NbPointsVie > 0);
+            bool ennemisEnVie = pListePersonnages.Any(p => p is Ennemis && p.NbPointsVie > 0);
+
+            if (herosEnVie)
+            {
+                return SantePersonnages.SuccesHeros;
+            }
+            else if (ennemisEnVie)
+            {
+                return SantePersonnages.SuccesEnnemi;
+            }
+            else
+            {
+                return SantePersonnages.AucunGagnant;
+            }
         }
     }
 }

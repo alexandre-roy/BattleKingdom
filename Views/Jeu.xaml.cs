@@ -121,8 +121,7 @@ namespace BattleKingdom.Views
                 Grid.SetColumn(attaque, 2);
                 ligneControle.Children.Add(attaque);
 
-                //TODO: Modifier le type (à droite de IS) représentant les personnages ayant une COMPÉTENCE SPÉCIALE
-                if (_moteurJeu.ListePersonnages[i] is Attaquant) 
+                if (_moteurJeu.ListePersonnages[i] is ICompetenceSpeciale) 
                 {
                     Image competence = new Image
                     {
@@ -165,8 +164,7 @@ namespace BattleKingdom.Views
                 // Pour permettre la recherche du contrôle avec FindName
                 RegisterName(personnage.Name, personnage);
 
-                //TODO: Modifier le type (à droite de IS) représentant les personnages ennemis
-                if (_moteurJeu.ListePersonnages[i] is Attaquant)
+                if (_moteurJeu.ListePersonnages[i] is Ennemis)
                     personnage.MouseDown += new MouseButtonEventHandler(SelectionEnnemi);
 
                 Grid.SetColumn(personnage, _moteurJeu.ListePersonnages[i].PositionX);
@@ -208,7 +206,6 @@ namespace BattleKingdom.Views
             {
                 if (_moteurJeu.EstAttaquePossible(_moteurJeu.HerosCourant, _moteurJeu.EnnemiCourant))
                 {
-                    //TODO: Modifier le type (à droite de AS) représentant les personnages pouvant attaquer
                     (_moteurJeu.HerosCourant as Attaquant).Attaquer(_moteurJeu.EnnemiCourant);
 
                     Journalisation.Tracer($"{_moteurJeu.HerosCourant.Nom} a attaqué l'ennemi {_moteurJeu.EnnemiCourant.Nom}", txtTrace);
@@ -318,8 +315,7 @@ namespace BattleKingdom.Views
                         grilleTerrain.Children.Remove(FindName(_moteurJeu.ListePersonnages[i].Nom) as Image);
 
                         // Lorsqu'un héros est mort, on désactive ses contrôles
-                        //TODO: Modifier le type (à droite de IS) représentant les personnages héros
-                        if (_moteurJeu.ListePersonnages[i] is Attaquant)
+                        if (_moteurJeu.ListePersonnages[i] is Heros)
                         {
                             (FindName(_moteurJeu.ListePersonnages[i].Nom + "xPersonnage") as Image).IsEnabled = false;
                             (FindName(_moteurJeu.ListePersonnages[i].Nom + "xPersonnage") as Image).Opacity = 0.5;
@@ -330,8 +326,7 @@ namespace BattleKingdom.Views
                             (FindName(_moteurJeu.ListePersonnages[i].Nom + "x" + MoteurJeu.TypeAction.Deplacement.ToString()) as Image).IsEnabled = false;
                             (FindName(_moteurJeu.ListePersonnages[i].Nom + "x" + MoteurJeu.TypeAction.Deplacement.ToString()) as Image).Opacity = 0.5;
 
-                            //TODO: Modifier le type (à droite de IS) représentant les personnages ayant une COMPÉTENCE SPÉCIALE
-                            if (_moteurJeu.ListePersonnages[i] is Attaquant) 
+                            if (_moteurJeu.ListePersonnages[i] is ICompetenceSpeciale) 
                             {
                                 (FindName(_moteurJeu.ListePersonnages[i].Nom + "x" + MoteurJeu.TypeAction.Competence.ToString()) as Image).IsEnabled = false;
                                 (FindName(_moteurJeu.ListePersonnages[i].Nom + "x" + MoteurJeu.TypeAction.Competence.ToString()) as Image).Opacity = 0.5;
@@ -370,16 +365,14 @@ namespace BattleKingdom.Views
         {
             if (estHeros)
             {
-                //TODO: Modifier le type (à droite de IS) représentant les personnages ennemis
-                List<Personnage> ennemisMorts = _moteurJeu.ListePersonnages.FindAll(p => p is Attaquant && p.NbPointsVie <= 0);
+                List<Personnage> ennemisMorts = _moteurJeu.ListePersonnages.FindAll(p => p is Ennemis && p.NbPointsVie <= 0);
 
                 if (ennemisMorts.Count > 0)
                     Journalisation.Tracer($"Liste des ennemis morts: {string.Join(", ", ennemisMorts.Select(p => p.Nom))}", txtTrace);
             }
             else
             {
-                //TODO: Modifier le type (à droite de IS) représentant les personnages héros
-                List<Personnage> herosMorts = _moteurJeu.ListePersonnages.FindAll(p => p is Attaquant && p.NbPointsVie <= 0);
+                List<Personnage> herosMorts = _moteurJeu.ListePersonnages.FindAll(p => p is Heros && p.NbPointsVie <= 0);
 
                 if (herosMorts.Count > 0)
                     Journalisation.Tracer($"Liste des héros morts: {string.Join(",", herosMorts.Select(p => p.Nom))}", txtTrace);
@@ -437,8 +430,7 @@ namespace BattleKingdom.Views
         {
 
             // Réactivation des contrôles des héros
-            //TODO: Modifier le type (à droite de IS) représentant les personnages héros
-            foreach (Personnage personnage in _moteurJeu.ListePersonnages.FindAll(p => p is Attaquant && p.NbPointsVie > 0))
+            foreach (Personnage personnage in _moteurJeu.ListePersonnages.FindAll(p => p is Heros && p.NbPointsVie > 0))
             {
                 Image controleAttaque = (Image)FindName(personnage.Nom + "x" + MoteurJeu.TypeAction.Attaque.ToString());
                 controleAttaque.IsEnabled = true;
@@ -448,8 +440,7 @@ namespace BattleKingdom.Views
                 controleDeplacement.IsEnabled = true;
                 controleDeplacement.Opacity = 1;
 
-                //TODO: Modifier le type (à droite de IS) représentant les personnages ayant une COMPÉTENCE SPÉCIALE
-                if (personnage is Attaquant) 
+                if (personnage is ICompetenceSpeciale) 
                 {
                     Image controleCompetence = (Image)FindName(personnage.Nom + "x" + MoteurJeu.TypeAction.Competence.ToString());
                     controleCompetence.IsEnabled = true;
@@ -485,8 +476,7 @@ namespace BattleKingdom.Views
             Journalisation.Tracer("\n\n_____C'est au tour de l'ennemi_____", txtTrace);
             Journalisation.Tracer($"\n> Tour restant pour l'ennemi: {_moteurJeu.NbActionRestante}", txtTrace);
 
-            //TODO: Modifier le type (à droite de IS) représentant les personnages ennemis
-            foreach (Personnage ennemi in _moteurJeu.ListePersonnages.FindAll(p => p is Attaquant && p.NbPointsVie > 0))
+            foreach (Personnage ennemi in _moteurJeu.ListePersonnages.FindAll(p => p is Ennemis && p.NbPointsVie > 0))
             {
                 Personnage herosPlusProche = _moteurJeu.TrouverHerosPlusProche(ennemi);
 
@@ -503,7 +493,6 @@ namespace BattleKingdom.Views
 
                     if (_moteurJeu.EstAttaquePossible(ennemi, herosPlusProche))
                     {
-                        //TODO: Modifier le type (à droite de AS) représentant les personnages ennemis en tant qu'attaquant (cast)
                         (ennemi as Attaquant).Attaquer(herosPlusProche);
 
                         Journalisation.Tracer($"{ennemi.Nom} a attaqué {herosPlusProche.Nom}", txtTrace);

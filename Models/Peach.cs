@@ -1,6 +1,6 @@
 ﻿namespace BattleKingdom.Models
 {
-    internal class Peach : Attaquant, ICompetenceSpeciale
+    internal class Peach : Heros, ICompetenceSpeciale
     {
         public Peach(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie)
         {
