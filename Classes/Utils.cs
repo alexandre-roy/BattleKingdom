@@ -24,13 +24,22 @@ namespace BattleKingdom.Classes
         /// <returns>Enum d'état de validation</returns>
         public static ValidationInitiales ValiderInitiales(string pInitiales)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(pInitiales))
+            {
+                return ValidationInitiales.ErreurVides;
+            }
+            else if (pInitiales.Length != 2 || pInitiales != pInitiales.ToUpper())
+            {
+                return ValidationInitiales.ErreurFormat;
+            }
+            else return ValidationInitiales.Conformes;
+
         }
 
         /// <summary>
         /// Retourne une chaîne de caractères pour bâtir l'infobulle d'une personnage afin de pouvoir
-        /// connaître son nom, son nombre de cases de déplacement, le nombre de points de dégât de son arme
-        /// et la distance d'attaque de son arme (si c'est un attaquant).
+        /// connaître son nom, son nombre de cases de déplacement, le nombre de points de dégât de son arme,
+        /// son nombre de points de vie, et la distance d'attaque de son arme (si c'est un attaquant).
         /// </summary>
         /// <param name="pListePersonnages">La liste des personnages du jeu</param>
         /// <param name="pIndexPersonnage">La position d'index du personnage actif dans la liste</param>

@@ -517,6 +517,9 @@ namespace BattleKingdom.Views
             }
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
 
+        }
     }
 }

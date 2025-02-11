@@ -5,8 +5,14 @@
 		private string _nom;
 		private int _nbDistanceMax;
 		private int _nbPointsDegat;
+        private int _nbCasesMaxDistance;
 
-		public string Nom
+
+        public Arme()
+        {
+        }
+
+        public string Nom
 		{
 			get { return _nom; }
 			set { _nom = value; }
@@ -23,5 +29,13 @@
 			get { return _nbPointsDegat; }
 			set { _nbPointsDegat = value; }
 		}
+        public int NbCasesMaxDistance { get; set; }
+
+        public Arme(string nom, int nbDistanceMax, int nbPointsDegat)
+        {
+            Nom = nom;
+            NbDistanceMax = nbDistanceMax;
+            NbPointsDegat = nbPointsDegat;
+        }
     }
 }

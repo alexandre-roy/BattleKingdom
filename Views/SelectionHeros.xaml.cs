@@ -1,10 +1,9 @@
 ﻿using BattleKingdom.Classes;
-using BattleKingdom.Views;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
-namespace BattleKingdom
+namespace BattleKingdom.Views
 {
 
     public partial class SelectionHeros : Window

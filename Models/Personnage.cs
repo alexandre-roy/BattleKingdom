@@ -1,6 +1,6 @@
 ﻿namespace BattleKingdom.Models
 {
-    abstract class Personnage
+    public abstract class Personnage
     {
         public enum TypePersonnage
         {
@@ -43,6 +43,20 @@
         {
             get { return _nbPointsVie; }
             set { _nbPointsVie = value; }
+        }
+
+        protected Personnage(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie)
+        {
+            Nom = nom;
+            PositionX = positionX;
+            PositionY = positionY;
+            NbCasesDeplacementMax = nbCasesDeplacementMax;
+            NbPointsVie = nbPointsVie;
+        }
+
+        internal void SeDeplacer(int nouvellePositionX, int nouvellePositionY)
+        {
+            throw new NotImplementedException();
         }
     }
 }

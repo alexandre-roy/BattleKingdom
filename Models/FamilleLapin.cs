@@ -1,6 +1,6 @@
 ﻿namespace BattleKingdom.Models
 {
-    public class FamilleLapin
+    internal class FamilleLapin
     {
     }
 }

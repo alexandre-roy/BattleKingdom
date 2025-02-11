@@ -1,11 +1,17 @@
 ﻿using System;
+using System.Diagnostics;
 namespace BattleKingdom.Classes
 {
-    internal class Journalisation
+    public static class Journalisation
     { 
-        public void Tracer()
+        public static void Tracer(string texte, System.Windows.Controls.TextBox txtTrace)
         {
-            //TODO
+
+        }
+
+        internal static void Tracer(string texte)
+        {
+            Trace.WriteLine(texte);
         }
     }
 }

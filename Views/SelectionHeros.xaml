@@ -15,8 +15,8 @@
         </Style>
 
         <Style TargetType="{x:Type ToggleButton}">
-            <EventSetter Event="Checked" Handler="GestionSelection" />
-            <EventSetter Event="Unchecked" Handler="GestionSelection" />
+            <EventSetter Event="Checked" Handler="GererSelection" />
+            <EventSetter Event="Unchecked" Handler="GererSelection" />
         </Style>
 
         <ControlTemplate x:Key="BoutonSelectionHerosGauche" TargetType="{x:Type ToggleButton}">

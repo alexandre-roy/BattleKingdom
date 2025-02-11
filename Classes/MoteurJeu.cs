@@ -85,7 +85,7 @@ namespace BattleKingdom.Classes
             int distance = GrilleJeu.CalculerDistance(new GrilleJeu.CoordonneesGrille(pAttaquant.PositionX, pAttaquant.PositionY), new GrilleJeu.CoordonneesGrille(pAttaque.PositionX, pAttaque.PositionY));
 
             //TODO: Modifier le type (à droite de IS) représentant les personnages qui peuvent attaquer
-            if (distance <= (pAttaquant as Attaquant).ArmeAttaquant.NbCasesMaxDistance)
+            if (distance <= (pAttaquant as Attaquant).Arme.NbCasesMaxDistance)
                 return true;
             else
                 return false;
@@ -120,7 +120,7 @@ namespace BattleKingdom.Classes
                 return false;
 
             //TODO: Modifier le type (à droite de IS) représentant les personnages ayant une compétence spéciale
-            (HerosCourant as Attaquant).ActiverCompetenceSpeciale(); 
+            (HerosCourant as ICompetenceSpeciale).ActiverCompetenceSpeciale(); 
 
             return true;
         }
@@ -136,10 +136,10 @@ namespace BattleKingdom.Classes
             if (NbActionRestante == 0)
             {
                 //TODO: Modifier le type (à droite de IS) représentant les personnages ayant une COMPÉTENCE SPÉCIALE
-                foreach (Personnage personnage in ListePersonnages.FindAll(p => p is Attaquant && p.NbPointsVie > 0))
+                foreach (Personnage personnage in ListePersonnages.FindAll(p => p is ICompetenceSpeciale && p.NbPointsVie > 0))
                 {
                     //TODO: Modifier le type (à droite de AS) représentant les personnages ayant une COMPÉTENCE SPÉCIALE
-                    (personnage as Attaquant).DesactiverCompetenceSpeciale();
+                    (personnage as ICompetenceSpeciale).DesactiverCompetenceSpeciale();
                 }
             }
         }
