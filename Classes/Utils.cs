@@ -1,4 +1,5 @@
-﻿using BattleKingdom.Models;
+﻿using System.ComponentModel;
+using BattleKingdom.Models;
 
 namespace BattleKingdom.Classes
 {
@@ -46,10 +47,16 @@ namespace BattleKingdom.Classes
         /// <returns>Retourne la chaîne de cartactères à afficher dans l'infobulle</returns>
         public static string FormattageInfoBulle(List<Personnage> pListePersonnages, int pIndexPersonnage)
         {
-            throw new NotImplementedException();
+            Personnage personnage = pListePersonnages[pIndexPersonnage];
+            
+            string description = $"{personnage.Nom}\n\nDéplacement: {personnage.NbCasesDeplacementMax} cases\nPoints de vie: {personnage.NbPointsVie}\n";
 
+            if (personnage is Attaquant a)
+            {
+                description += $"Points de dégat: {a.Arme.NbPointsDegat}\nDistance d'attaque: {a.Arme.NbDistanceMax}";
+            }
+
+            return description;
         }
-
-
     }
 }

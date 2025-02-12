@@ -1,4 +1,5 @@
-﻿using BattleKingdom.Models;
+﻿using System.Dynamic;
+using BattleKingdom.Models;
 using static BattleKingdom.Classes.Utils;
 using static BattleKingdom.Models.Personnage;
 
@@ -222,14 +223,18 @@ namespace BattleKingdom.Classes
         {
             GrilleJeu.CoordonneesGrille positionPersonnage;
 
-            positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
-            pListePersonnages.Add(new Ennemis("Ziggy", positionPersonnage.X, positionPersonnage.Y, 5, 100));
+            Arme arme04 = new Arme("Gun01", 10, 10);
+            Arme arme05 = new Arme("Gun02", 10, 10);
+            Arme arme06 = new Arme("Gun03", 10, 10);
 
             positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
-            pListePersonnages.Add(new Ennemis("Smasher", positionPersonnage.X, positionPersonnage.Y, 7, 50));
+            pListePersonnages.Add(Activator.CreateInstance(typeof(Ennemis), "Ziggy", positionPersonnage.X, positionPersonnage.Y, 5, 100, arme04) as Personnage);
 
             positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
-            pListePersonnages.Add(new Ennemis("Kong", positionPersonnage.X, positionPersonnage.Y, 3, 150));
+            pListePersonnages.Add(Activator.CreateInstance(typeof(Ennemis), "Smasher", positionPersonnage.X, positionPersonnage.Y, 7, 50, arme05) as Personnage);
+
+            positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
+            pListePersonnages.Add(Activator.CreateInstance(typeof(Ennemis), "Kong", positionPersonnage.X, positionPersonnage.Y, 3, 150, arme06) as Personnage);
         }
 
         /// <summary>
@@ -239,20 +244,43 @@ namespace BattleKingdom.Classes
         /// <returns>L'état du jeu : y-a-t'il un gagnant et si oui, quelle équipe? (ennemis ou héros)</returns>
         public static SantePersonnages EvaluerSantePersonnages(List<Personnage> pListePersonnages)
         {
-            bool herosEnVie = pListePersonnages.Any(p => p is Heros && p.NbPointsVie > 0);
-            bool ennemisEnVie = pListePersonnages.Any(p => p is Ennemis && p.NbPointsVie > 0);
+            bool herosEnVie = true;
+            bool ennemisEnVie = true;
 
-            if (herosEnVie)
+            foreach (Personnage p in pListePersonnages)
             {
-                return SantePersonnages.SuccesHeros;
+                if (p.NbPointsVie > 0 && p is Heros)
+                {
+                    herosEnVie = true;
+                    break;
+                }
+                else if (p is Heros)
+                {
+                    herosEnVie = false;
+                }
+
+                if(p.NbPointsVie > 0 && p is Ennemis)
+                {
+                    ennemisEnVie = true;
+                }
+                else if (p is Ennemis)
+                {
+                    ennemisEnVie = false;                      
+                }
             }
-            else if (ennemisEnVie)
+
+
+            if (herosEnVie && ennemisEnVie)
+            {
+                return SantePersonnages.AucunGagnant; 
+            }
+            else if (ennemisEnVie && !herosEnVie)
             {
                 return SantePersonnages.SuccesEnnemi;
             }
             else
             {
-                return SantePersonnages.AucunGagnant;
+                return SantePersonnages.SuccesHeros;
             }
         }
     }

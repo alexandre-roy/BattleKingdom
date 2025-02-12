@@ -1,20 +1,22 @@
 ﻿namespace BattleKingdom.Models
 {
-    internal class Mario : Heros, ICompetenceSpeciale
+    public class Mario : Heros, ICompetenceSpeciale
     {
-        public Mario(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie)
+        private int _degatDeBase;
+
+        public Mario(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie, Arme arme) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie, arme)
         {
-
+            _degatDeBase = Arme.NbPointsDegat;
         }
-
+        
         public void ActiverCompetenceSpeciale()
         {
-            throw new NotImplementedException();
+            Arme.NbPointsDegat = (int)(Arme.NbPointsDegat * 1.1);
         }
 
         public void DesactiverCompetenceSpeciale()
         {
-            throw new NotImplementedException();
+            Arme.NbPointsDegat = _degatDeBase;
         }
     }
 }

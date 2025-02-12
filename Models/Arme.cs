@@ -1,16 +1,10 @@
 ﻿namespace BattleKingdom.Models
 {
-    internal class Arme
+    public class Arme
     {
 		private string _nom;
 		private int _nbDistanceMax;
 		private int _nbPointsDegat;
-        private int _nbCasesMaxDistance;
-
-
-        public Arme()
-        {
-        }
 
         public string Nom
 		{

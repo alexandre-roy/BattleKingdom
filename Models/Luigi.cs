@@ -1,19 +1,22 @@
 ﻿namespace BattleKingdom.Models
 {
-    internal class Luigi : Heros, ICompetenceSpeciale
+    public class Luigi : Heros, ICompetenceSpeciale
     {
-        public Luigi(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie)
-        {
+        private int _deplacementDeBase;
 
+        public Luigi(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie, Arme arme) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie, arme)
+        {
+            _deplacementDeBase = NbCasesDeplacementMax;
         }
+
         public void ActiverCompetenceSpeciale()
         {
-            throw new NotImplementedException();
+            NbCasesDeplacementMax = (int)(NbCasesDeplacementMax * 1.1);
         }
 
         public void DesactiverCompetenceSpeciale()
         {
-            throw new NotImplementedException();
+            NbCasesDeplacementMax = _deplacementDeBase;
         }
     }
 }

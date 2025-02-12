@@ -1,8 +1,9 @@
 ﻿namespace BattleKingdom.Models
 {
-    internal interface ICompetenceSpeciale
+    interface ICompetenceSpeciale
     {
-        void ActiverCompetenceSpeciale();
-        void DesactiverCompetenceSpeciale();
+        abstract void ActiverCompetenceSpeciale();
+
+        abstract void DesactiverCompetenceSpeciale();
     }
 }

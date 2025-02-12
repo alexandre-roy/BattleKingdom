@@ -1,20 +1,26 @@
 ﻿namespace BattleKingdom.Models
 {
-    internal class Peach : Heros, ICompetenceSpeciale
+    public class Peach : Heros, ICompetenceSpeciale
     {
-        public Peach(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie)
-        {
+        private int _degatDeBase;
+        private int _deplacementDeBase;
 
+        public Peach(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie, Arme arme) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie, arme)
+        {
+            _degatDeBase = Arme.NbPointsDegat;
+            _deplacementDeBase = NbCasesDeplacementMax;
         }
 
         public void ActiverCompetenceSpeciale()
         {
-            throw new NotImplementedException();
+            NbCasesDeplacementMax = (int)(NbCasesDeplacementMax * 1.1);
+            Arme.NbPointsDegat = (int)(Arme.NbPointsDegat * 1.1);
         }
 
         public void DesactiverCompetenceSpeciale()
         {
-            throw new NotImplementedException();
+            NbCasesDeplacementMax = _degatDeBase;
+            Arme.NbPointsDegat = _deplacementDeBase = NbCasesDeplacementMax;
         }
     }
 }

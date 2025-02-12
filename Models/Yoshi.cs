@@ -1,21 +1,23 @@
 ﻿
 namespace BattleKingdom.Models
 {
-    internal class Yoshi : Heros, ICompetenceSpeciale
+    public class Yoshi : Heros, ICompetenceSpeciale
     {
-        public Yoshi(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie)
-        {
+        private int _distanceArmeDeBase;
 
+        public Yoshi(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie, Arme arme) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie, arme)
+        {
+            _distanceArmeDeBase = Arme.NbDistanceMax;
         }
 
         public void ActiverCompetenceSpeciale()
         {
-            throw new NotImplementedException();
+            Arme.NbDistanceMax = (int)(Arme.NbDistanceMax * 1.1);
         }
 
         public void DesactiverCompetenceSpeciale()
         {
-            throw new NotImplementedException();
+            Arme.NbDistanceMax = _distanceArmeDeBase;
         }
     }
 }

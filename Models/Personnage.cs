@@ -56,7 +56,8 @@
 
         internal void SeDeplacer(int nouvellePositionX, int nouvellePositionY)
         {
-            throw new NotImplementedException();
+            PositionX = nouvellePositionX;
+            PositionY = nouvellePositionY;
         }
     }
 }
