@@ -84,7 +84,7 @@ namespace BattleKingdom.Classes
 
             int distance = GrilleJeu.CalculerDistance(new GrilleJeu.CoordonneesGrille(pAttaquant.PositionX, pAttaquant.PositionY), new GrilleJeu.CoordonneesGrille(pAttaque.PositionX, pAttaque.PositionY));
 
-            if (distance <= (pAttaquant as Attaquant).Arme.NbCasesMaxDistance)
+            if (distance >= (pAttaquant as Attaquant).Arme.NbCasesMaxDistance)
                 return true;
             else
                 return false;
@@ -223,18 +223,18 @@ namespace BattleKingdom.Classes
         {
             GrilleJeu.CoordonneesGrille positionPersonnage;
 
-            Arme arme04 = new Arme("Gun01", 10, 10);
-            Arme arme05 = new Arme("Gun02", 10, 10);
-            Arme arme06 = new Arme("Gun03", 10, 10);
+            Arme arme04 = new Arme("Gun04", 10, 10);
+            Arme arme05 = new Arme("Gun05", 11, 9);
+            Arme arme06 = new Arme("Gun06", 5, 20);
 
             positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
-            pListePersonnages.Add(Activator.CreateInstance(typeof(Ennemis), "Ziggy", positionPersonnage.X, positionPersonnage.Y, 5, 100, arme04) as Personnage);
+            pListePersonnages.Add(Activator.CreateInstance(typeof(Ennemis), "Ziggy", positionPersonnage.X, positionPersonnage.Y, 5, 15, arme04) as Personnage);
 
             positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
-            pListePersonnages.Add(Activator.CreateInstance(typeof(Ennemis), "Smasher", positionPersonnage.X, positionPersonnage.Y, 7, 50, arme05) as Personnage);
+            pListePersonnages.Add(Activator.CreateInstance(typeof(Ennemis), "Smasher", positionPersonnage.X, positionPersonnage.Y, 10, 10, arme05) as Personnage);
 
             positionPersonnage = GrilleJeu.GenererPositionHasardPersonnage(pListePersonnages, TypePersonnage.Ennemi);
-            pListePersonnages.Add(Activator.CreateInstance(typeof(Ennemis), "Kong", positionPersonnage.X, positionPersonnage.Y, 3, 150, arme06) as Personnage);
+            pListePersonnages.Add(Activator.CreateInstance(typeof(Ennemis), "Kong", positionPersonnage.X, positionPersonnage.Y, 3, 25, arme06) as Personnage);
         }
 
         /// <summary>
@@ -244,35 +244,24 @@ namespace BattleKingdom.Classes
         /// <returns>L'état du jeu : y-a-t'il un gagnant et si oui, quelle équipe? (ennemis ou héros)</returns>
         public static SantePersonnages EvaluerSantePersonnages(List<Personnage> pListePersonnages)
         {
-            bool herosEnVie = true;
-            bool ennemisEnVie = true;
+            bool herosEnVie = false;
+            bool ennemisEnVie = false;
 
             foreach (Personnage p in pListePersonnages)
             {
                 if (p.NbPointsVie > 0 && p is Heros)
                 {
                     herosEnVie = true;
-                    break;
                 }
-                else if (p is Heros)
-                {
-                    herosEnVie = false;
-                }
-
-                if(p.NbPointsVie > 0 && p is Ennemis)
+                else if (p.NbPointsVie > 0 && p is Ennemis)
                 {
                     ennemisEnVie = true;
                 }
-                else if (p is Ennemis)
-                {
-                    ennemisEnVie = false;                      
-                }
             }
-
 
             if (herosEnVie && ennemisEnVie)
             {
-                return SantePersonnages.AucunGagnant; 
+                return SantePersonnages.AucunGagnant;
             }
             else if (ennemisEnVie && !herosEnVie)
             {
