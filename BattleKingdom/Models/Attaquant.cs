@@ -7,14 +7,18 @@ namespace BattleKingdom.Models
 
         public Arme Arme { get; set; }
 
-        public Attaquant(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie, Arme arme) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie)
+        protected Attaquant(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie, Arme arme) : base(nom, positionX, positionY, nbCasesDeplacementMax, nbPointsVie)
         {
             Arme = arme;
         }
 
-        internal void Attaquer(Personnage ennemiCourant)
+        public void Attaquer(Personnage ennemiCourant)
         {
             ennemiCourant.NbPointsVie -= Arme.NbPointsDegat;
+            if (ennemiCourant.NbPointsVie < 0)
+            {
+                ennemiCourant.NbPointsVie = 0;
+            }           
         }
     }
 }

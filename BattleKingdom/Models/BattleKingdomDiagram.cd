@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="BattleKingdom.Models.Attaquant">
+    <Position X="13.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAQAAQAAAAAAA=</HashCode>
+      <FileName>Models\Attaquant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleKingdom.Models.Arme">
+    <Position X="9.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAADABCAAAAAASAAAAAAAAAA=</HashCode>
+      <FileName>Models\Arme.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleKingdom.Models.Allies">
+    <Position X="16.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Allies.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleKingdom.Models.Ennemis">
+    <Position X="16.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Ennemis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleKingdom.Models.FamilleLapin">
+    <Position X="19.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FamilleLapin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleKingdom.Models.Heros">
+    <Position X="12.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Heros.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleKingdom.Models.Yoshi">
+    <Position X="12.25" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgACAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Yoshi.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleKingdom.Models.Personnage">
+    <Position X="14" Y="0.5" Width="2.5" />
+    <NestedTypes>
+      <Enum Name="BattleKingdom.Models.Personnage.TypePersonnage" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Personnage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAEgCIAAAAAABCAAgAAAAAMAAAAAAAA=</HashCode>
+      <FileName>Models\Personnage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleKingdom.Models.Mario">
+    <Position X="8.75" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAABAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Models\Mario.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleKingdom.Models.Peach">
+    <Position X="5.25" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACgAAAAAAAABAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Models\Peach.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleKingdom.Models.Luigi">
+    <Position X="15.75" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACgAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Luigi.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="BattleKingdom.Models.ICompetenceSpeciale">
+    <Position X="7.5" Y="7.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ICompetenceSpeciale.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

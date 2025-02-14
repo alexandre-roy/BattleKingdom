@@ -1,4 +1,5 @@
-﻿using BattleKingdom.Classes;
+﻿using System.Diagnostics;
+using BattleKingdom.Classes;
 
 namespace BattleKingdom.Models
 {
@@ -33,11 +34,19 @@ namespace BattleKingdom.Models
         {
             get { return _positionX; }
             set {
-                if (value < 0 || value > MoteurJeu.LARGEUR_GRILLE)
+                try
                 {
-                    throw new ExceptionPersonnage((value), "La position x ne peut pas être à l'extérieur de la grille.");
+                    if (value < 0 || value > MoteurJeu.LARGEUR_GRILLE)
+                    {
+                        throw new ExceptionPersonnage((value), "La position x ne peut pas être à l'extérieur de la grille.");
+                    }
+                    _positionX = value;
                 }
-                _positionX = value;
+                catch (ExceptionPersonnage)
+                {
+                    Trace.WriteLine("La position x ne peut pas être à l'extérieur de la grille.");
+                }
+                
             }
         }
 
@@ -45,11 +54,18 @@ namespace BattleKingdom.Models
         {
             get { return _positionY; }
             set {
-                if (value < 0 || value > MoteurJeu.LARGEUR_GRILLE)
+                try
                 {
-                    throw new ExceptionPersonnage((value), "La position y ne peut pas être à l'extérieur de la grille.");
+                    if (value < 0 || value > MoteurJeu.LARGEUR_GRILLE)
+                    {
+                        throw new ExceptionPersonnage((value), "La position y ne peut pas être à l'extérieur de la grille.");
+                    }
+                    _positionY = value;
                 }
-                _positionY = value; 
+                catch (ExceptionPersonnage)
+                {
+                    Trace.WriteLine("La position y ne peut pas être à l'extérieur de la grille.");
+                }
             }
         }
 
@@ -85,7 +101,7 @@ namespace BattleKingdom.Models
             NbPointsVie = nbPointsVie;
         }
 
-        internal void SeDeplacer(int nouvellePositionX, int nouvellePositionY)
+        public void SeDeplacer(int nouvellePositionX, int nouvellePositionY)
         {
             PositionX = nouvellePositionX;
             PositionY = nouvellePositionY;
