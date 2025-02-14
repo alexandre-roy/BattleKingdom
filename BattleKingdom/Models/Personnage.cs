@@ -92,6 +92,14 @@ namespace BattleKingdom.Models
                 _nbPointsVie = value; }
         }
 
+        /// <summary>
+        /// Classe de base d'un personnage
+        /// </summary>
+        /// <param name="nom">Son nom</param>
+        /// <param name="positionX">Sa posiition X</param>
+        /// <param name="positionY">Sa position Y</param>
+        /// <param name="nbCasesDeplacementMax">Son nombre de cases de déplacement max</param>
+        /// <param name="nbPointsVie">Son nombre de points de vie</param>
         protected Personnage(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie)
         {
             Nom = nom;
@@ -101,6 +109,11 @@ namespace BattleKingdom.Models
             NbPointsVie = nbPointsVie;
         }
 
+        /// <summary>
+        /// Permet au personnage de se déplacer
+        /// </summary>
+        /// <param name="nouvellePositionX">La case X ou le personnage va se déplacer</param>
+        /// <param name="nouvellePositionY">La case Y ou le personnage va se déplacer</param>
         public void SeDeplacer(int nouvellePositionX, int nouvellePositionY)
         {
             PositionX = nouvellePositionX;
@@ -110,6 +123,11 @@ namespace BattleKingdom.Models
 
     public class ExceptionPersonnage : Exception
     {
+        /// <summary>
+        /// Exception lancée quand les tests pour quand les personnages ne passent pas 
+        /// </summary>
+        /// <param name="valeur">Valeur qui ne passe pas les tests</param>
+        /// <param name="message">Message de l'exception</param>
         public ExceptionPersonnage(int valeur, string message) : base($"La valeur {valeur} est invalide.")
         {
 

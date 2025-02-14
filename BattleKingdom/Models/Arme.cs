@@ -25,6 +25,13 @@
 		}
         public int NbCasesMaxDistance { get; set; }
 
+
+        /// <summary>
+		/// Instancie une arme
+		/// </summary>
+		/// <param name="nom">Son nom</param>
+		/// <param name="nbDistanceMax">Le nombre de cases d'attaque max</param>
+		/// <param name="nbPointsDegat">Le nombre de points dégats</param>
         public Arme(string nom, int nbDistanceMax, int nbPointsDegat)
         {
             Nom = nom;
