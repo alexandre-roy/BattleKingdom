@@ -3,10 +3,8 @@
 # GITHUB
 * https://github.com/alexandre-roy/14C-H25-TP1-Roy_Alexandre
 # DESCRIPTION
-* TODO
 * Ce projet m’a permis d’en apprendre davantage sur la hiérarchie, et de mieux comprendre qui peut accéder à quoi. De plus, comme nous avons dû préparer notre projet seuls, cela m’a appris à séparer mes fichiers en plusieurs dossiers. Lorsque j’ai rencontré une erreur avec Git, j’étais plus à l’aise qu’avant pour la résoudre, car je comprenais mieux le fonctionnement des différentes parties. Ce projet m’a également appris à utiliser des interfaces et la dérivation de classes.
 # JUSTIFICATIONS DU DÉCOUPAGE ORGANIQUE
-* TODO
 * Premièrement, ma hiérarchie est la suivante : En haut de tout, nous avons une classe Personnage, qui englobe les deux sous-classes Attaquant et Allié. La classe Attaquant englobe les classes Héros et Ennemis. De plus, la classe Héros englobe les classes Mario, Luigi, Yoshi, Peach, et enfin la classe FamilleLapins.
 * Personnage : Ici, la classe est abstraite parce qu’elle ne peut pas être instanciée, mais elle sert de base pour d’autres classes en dessous d’elle. J’y ai aussi placé la méthode SeDeplacer car tous les personnages peuvent se déplacer. Le constructeur est protected, car il ne peut pas être instancié, mais ses enfants peuvent utiliser la base.
 * Attaquant : Ici, j’ai choisi de créer une classe et non une interface, car ses enfants SONT des attaquants, et non qu’ils ONT l’habilité d’attaquer. C’est un concept de « être » et « avoir » qu’on avait vu en classe. Le constructeur est protected pour les mêmes raisons que Personnage. La méthode Attaquer est, bien entendu, dans cette classe.
