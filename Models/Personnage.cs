@@ -1,4 +1,6 @@
-﻿namespace BattleKingdom.Models
+﻿using BattleKingdom.Classes;
+
+namespace BattleKingdom.Models
 {
     public abstract class Personnage
     {
@@ -18,31 +20,60 @@
         public string Nom
         {
             get { return _nom; }
-            set { _nom = value; }
+            set {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(nameof(Nom), "Le nom ne doit pas être nul ou des espaces vides.");
+                }
+                _nom = value; 
+            }
         }
 
         public int PositionX
         {
             get { return _positionX; }
-            set { _positionX = value; }
+            set {
+                if (value < 0 || value > MoteurJeu.LARGEUR_GRILLE)
+                {
+                    throw new ExceptionPersonnage((value), "La position x ne peut pas être à l'extérieur de la grille.");
+                }
+                _positionX = value;
+            }
         }
 
         public int PositionY
         {
             get { return _positionY; }
-            set { _positionY = value; }
+            set {
+                if (value < 0 || value > MoteurJeu.LARGEUR_GRILLE)
+                {
+                    throw new ExceptionPersonnage((value), "La position y ne peut pas être à l'extérieur de la grille.");
+                }
+                _positionY = value; 
+            }
         }
 
         public int NbCasesDeplacementMax
         {
             get { return _nbCasesDeplacementMax; }
-            set { _nbCasesDeplacementMax = value; }
+            set {
+                if (value > MoteurJeu.LARGEUR_GRILLE)
+                {
+                    throw new ExceptionPersonnage((value), "Le nombre de cases de déplacement ne doit pas être supérieur à la taile de la grille.");
+                }
+                _nbCasesDeplacementMax = value; 
+            }
         }
 
         public int NbPointsVie
         {
             get { return _nbPointsVie; }
-            set { _nbPointsVie = value; }
+            set {
+                if (value < 0)
+                {
+                    value = 0;
+                }
+                _nbPointsVie = value; }
         }
 
         protected Personnage(string nom, int positionX, int positionY, int nbCasesDeplacementMax, int nbPointsVie)
@@ -58,6 +89,14 @@
         {
             PositionX = nouvellePositionX;
             PositionY = nouvellePositionY;
+        }
+    }
+
+    public class ExceptionPersonnage : Exception
+    {
+        public ExceptionPersonnage(int valeur, string message) : base($"La valeur {valeur} est invalide.")
+        {
+
         }
     }
 }
