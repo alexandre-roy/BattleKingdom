@@ -5,11 +5,11 @@
         /// <summary>
         /// Active une compétence spéciale
         /// </summary>
-        abstract void ActiverCompetenceSpeciale();
+        void ActiverCompetenceSpeciale();
 
         /// <summary>
         /// Désactive une compétence spéciale
         /// </summary>
-        abstract void DesactiverCompetenceSpeciale();
+        void DesactiverCompetenceSpeciale();
     }
 }

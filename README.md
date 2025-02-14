@@ -1,19 +1,19 @@
-# Co-développeur
-* Nom étudiant.e : Alexandre Roy
+# Co-dï¿½veloppeur
+* Nom ï¿½tudiant.e : Alexandre Roy
 # GITHUB
 * https://github.com/alexandre-roy/14C-H25-TP1-Roy_Alexandre
 # DESCRIPTION
-* Ce projet m’a permis d’en apprendre davantage sur la hiérarchie, et de mieux comprendre qui peut accéder à quoi. De plus, comme nous avons dû préparer notre projet seuls, cela m’a appris à séparer mes fichiers en plusieurs dossiers. Lorsque j’ai rencontré une erreur avec Git, j’étais plus à l’aise qu’avant pour la résoudre, car je comprenais mieux le fonctionnement des différentes parties. Ce projet m’a également appris à utiliser des interfaces et la dérivation de classes.
-# JUSTIFICATIONS DU DÉCOUPAGE ORGANIQUE
-* Premièrement, ma hiérarchie est la suivante : En haut de tout, nous avons une classe Personnage, qui englobe les deux sous-classes Attaquant et Allié. La classe Attaquant englobe les classes Héros et Ennemis. De plus, la classe Héros englobe les classes Mario, Luigi, Yoshi, Peach, et enfin la classe FamilleLapins.
-* Personnage : Ici, la classe est abstraite parce qu’elle ne peut pas être instanciée, mais elle sert de base pour d’autres classes en dessous d’elle. J’y ai aussi placé la méthode SeDeplacer car tous les personnages peuvent se déplacer. Le constructeur est protected, car il ne peut pas être instancié, mais ses enfants peuvent utiliser la base.
-* Attaquant : Ici, j’ai choisi de créer une classe et non une interface, car ses enfants SONT des attaquants, et non qu’ils ONT l’habilité d’attaquer. C’est un concept de « être » et « avoir » qu’on avait vu en classe. Le constructeur est protected pour les mêmes raisons que Personnage. La méthode Attaquer est, bien entendu, dans cette classe.
-* Arme : Arme est une classe assez normale, elle n’hérite de rien et rien n’hérite d’elle.
-* Héros : Le constructeur est protected pour les mêmes raisons que Personnage et Attaquant.
-* Ennemis : Le constructeur est public, car, contrairement à Héros, Ennemis est instancié.
-* Allié : Le constructeur est public pour les mêmes raisons que Ennemis.
-* FamilleLapin : Le constructeur est public, encore pour les mêmes raisons.
-* Mario, Luigi, Yoshi, Peach : Constructeurs publics, car ils sont aussi instanciés. Ils possèdent également l’interface des compétences spéciales.
-* ICompetenceSpeciale : Ceci est une interface, elle contient seulement les méthodes abstraites de base, car elles peuvent être modifiées dans le futur par Mario, Luigi, Yoshi, et Peach.
+* Ce projet mï¿½a permis dï¿½en apprendre davantage sur la hiï¿½rarchie, et de mieux comprendre qui peut accï¿½der ï¿½ quoi. De plus, comme nous avons dï¿½ prï¿½parer notre projet seuls, cela mï¿½a appris ï¿½ sï¿½parer mes fichiers en plusieurs dossiers. Lorsque jï¿½ai rencontrï¿½ une erreur avec Git, jï¿½ï¿½tais plus ï¿½ lï¿½aise quï¿½avant pour la rï¿½soudre, car je comprenais mieux le fonctionnement des diffï¿½rentes parties. Ce projet mï¿½a ï¿½galement appris ï¿½ utiliser des interfaces et la dï¿½rivation de classes.
+# JUSTIFICATIONS DU Dï¿½COUPAGE ORGANIQUE
+* Premiï¿½rement, ma hiï¿½rarchie est la suivante : En haut de tout, nous avons une classe Personnage, qui englobe les deux sous-classes Attaquant et Alliï¿½. La classe Attaquant englobe les classes Hï¿½ros et Ennemis. De plus, la classe Hï¿½ros englobe les classes Mario, Luigi, Yoshi, Peach, et enfin la classe FamilleLapins.
+* Personnage : Ici, la classe est abstraite parce quï¿½elle ne peut pas ï¿½tre instanciï¿½e, mais elle sert de base pour dï¿½autres classes en dessous dï¿½elle. Jï¿½y ai aussi placï¿½ la mï¿½thode SeDeplacer car tous les personnages peuvent se dï¿½placer. Le constructeur est protected, car il ne peut pas ï¿½tre instanciï¿½, mais ses enfants peuvent utiliser la base.
+* Attaquant : Ici, jï¿½ai choisi de crï¿½er une classe et non une interface, car ses enfants SONT des attaquants, et non quï¿½ils ONT lï¿½habilitï¿½ dï¿½attaquer. Cï¿½est un concept de ï¿½ ï¿½tre ï¿½ et ï¿½ avoir ï¿½ quï¿½on avait vu en classe. Le constructeur est protected pour les mï¿½mes raisons que Personnage. La mï¿½thode Attaquer est, bien entendu, dans cette classe.
+* Arme : Arme est une classe assez normale, elle nï¿½hï¿½rite de rien et rien nï¿½hï¿½rite dï¿½elle.
+* Hï¿½ros : Le constructeur est protected pour les mï¿½mes raisons que Personnage et Attaquant.
+* Ennemis : Le constructeur est public, car, contrairement ï¿½ Hï¿½ros, Ennemis est instanciï¿½.
+* Alliï¿½ : Le constructeur est public pour les mï¿½mes raisons que Ennemis.
+* FamilleLapin : Le constructeur est public, encore pour les mï¿½mes raisons.
+* Mario, Luigi, Yoshi, Peach : Constructeurs publics, car ils sont aussi instanciï¿½s. Ils possï¿½dent ï¿½galement lï¿½interface des compï¿½tences spï¿½ciales.
+* ICompetenceSpeciale : Ceci est une interface, elle contient seulement les mï¿½thodes automatiquement abstraites de base, car elles peuvent ï¿½tre modifiï¿½es dans le futur par Mario, Luigi, Yoshi, et Peach.
 # IMPORTANT
-* Comme nous en avions parlé dans un des cours précédents, je n’ai pas accès à l’extension pour créer des diagrammes de classes, alors j’ai ouvert mon TP sur un autre ordinateur, ajouté le diagramme, et me suis renvoyé le TP par la suite. Je ne peux pas ouvrir le fichier avec mon VSCode, donc je ne sais pas s’il sera encore bien formaté. C’est pour cela que j’ai ajouté l’image diagramme.png dans mon dossier models. Vous pouvez maintenant voir mon diagramme à partir de cette photo. Merci !
+* Comme nous en avions parlï¿½ dans un des cours prï¿½cï¿½dents, je nï¿½ai pas accï¿½s ï¿½ lï¿½extension pour crï¿½er des diagrammes de classes, alors jï¿½ai ouvert mon TP sur un autre ordinateur, ajoutï¿½ le diagramme, et me suis renvoyï¿½ le TP par la suite. Je ne peux pas ouvrir le fichier avec mon VSCode, donc je ne sais pas sï¿½il sera encore bien formatï¿½. Cï¿½est pour cela que jï¿½ai ajoutï¿½ lï¿½image diagramme.png dans mon dossier models. Vous pouvez maintenant voir mon diagramme ï¿½ partir de cette photo. Merci !
